@@ -98,21 +98,24 @@ public class BallDemo
         // create nd show the blls
         BoxBall ball = new BoxBall(centerX, centerY, 16, Color.BLUE, myCanvas, boxLength);
         ball.draw();
+   
+        balls.add(ball);
         
-        putBoundingPoints(ball, "topRight", topRight);
-        putBoundingPoints(ball, "topLeft", topLeft);
-        putBoundingPoints(ball, "botLeft", botLeft);
-        putBoundingPoints(ball, "botRight", botRight);
         
         BoxBall ball2 = new BoxBall(centerX, centerY, 16, Color.RED, myCanvas, boxLength);
-        ball.draw();
+        ball2.draw();
         
-        putBoundingPoints(ball2, "topRight", topRight);
-        putBoundingPoints(ball2, "topLeft", topLeft);
-        putBoundingPoints(ball2, "botLeft", botLeft);
-        putBoundingPoints(ball2, "botRight", botRight);
+        balls.add(ball2);
         
-        
+        balls.stream()
+        .forEach(b -> 
+        {
+            putBoundingPoints(b, "topRight", topRight);
+            putBoundingPoints(b, "topLeft", topLeft);
+            putBoundingPoints(b, "botLeft", botLeft);
+            putBoundingPoints(b, "botRight", botRight);
+        }
+        );        
    
         
         int timer = 0;
@@ -126,6 +129,8 @@ public class BallDemo
             // smll dely
             
             // Draw line in update method
+            // Erase All Balls in Stream
+            balls.stream().forEach(b -> b.erase());
             
             ball.move();
             ball2.move();
