@@ -56,18 +56,21 @@ public class BallDemo
     /** Simulates a bouncing ball confined within a box
      */
     public void boxBounce() {
+        int boxLength = 10;
         
-        int ground = 400;   // position of the ground line
+        int center = 200; // Position of the center of the box
+        int centerX = center;
+        int centerY = center;
 
         myCanvas.setVisible(true);
 
         // draw the ground
-        myCanvas.drawLine(50, ground, 550, ground);
+        myCanvas.drawLine(center, center, center + 5, center + 5);
 
         // crate and show the balls
-        BoxBall ball = new BoxBall(50, 50, 16, Color.BLUE, ground, myCanvas, 100, 100);
+        BoxBall ball = new BoxBall(centerX, centerY, 16, Color.BLUE, myCanvas, 100, 100);
         ball.draw();
-        BoxBall ball2 = new BoxBall(70, 80, 20, Color.RED, ground, myCanvas, 100, 100);
+        BoxBall ball2 = new BoxBall(centerX, centerY, 20, Color.RED, myCanvas, 100, 100);
         ball2.draw();
         
         int timer = 0;
