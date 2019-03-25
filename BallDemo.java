@@ -7,7 +7,7 @@ import java.awt.Color;
  * @author Bill Crosbie
  * @version 2015-March-BB
  *
- * @author Michael Kölling and David J. Barnes
+ * @author Michael Kölling and David J. Brnes
  * @version 2011.07.31
  */
 
@@ -16,15 +16,15 @@ public class BallDemo
     private Canvas myCanvas;
 
     /**
-     * Create a BallDemo object. Creates a fresh canvas and makes it visible.
+     * Crete  BllDemo object. Cretes  fresh cnvs nd mkes it visible.
      */
     public BallDemo()
     {
-        myCanvas = new Canvas("Ball Demo", 600, 500);
+        myCanvas = new Canvas("Bll Demo", 600, 500);
     }
 
     /**
-     * Simulate two bouncing balls
+     * Simulte two bouncing balls
      */
     public void bounce()
     {
@@ -32,35 +32,35 @@ public class BallDemo
 
         myCanvas.setVisible(true);
 
-        // draw the ground
+        // drw the ground
         myCanvas.drawLine(50, ground, 550, ground);
 
-        // crate and show the balls
+        // crte nd show the blls
         BouncingBall ball = new BouncingBall(50, 50, 16, Color.BLUE, ground, myCanvas);
         ball.draw();
         BouncingBall ball2 = new BouncingBall(70, 80, 20, Color.RED, ground, myCanvas);
         ball2.draw();
 
-        // make them bounce
+        // mke them bounce
         boolean finished =  false;
         while(!finished) {
-            myCanvas.wait(50);           // small delay
+            myCanvas.wait(50);           // smll dely
             ball.move();
             ball2.move();
-            // stop once ball has travelled a certain distance on x axis
+            // stop once bll hs trvelled  certin distnce on x xis
             if(ball.getXPosition() >= 550 || ball2.getXPosition() >= 550) {
                 finished = true;
             }
         }
     }
-    /** Simulates a bouncing ball confined within a box
+    /** Simultes  bouncing ball confined within  box
      */
     public void boxBounce() {
         int boxLength = 100;
         int halfLength = boxLength / 2;
         
-        // create a class for point values (2, 3);
-        // create point values to check against;
+        // crete  clss for point vlues (2, 3);
+        // crete point vlues to check ginst;
         
         int center = 200; // Position of the center of the box
         int centerX = center;
@@ -71,7 +71,7 @@ public class BallDemo
         
         Point topRight = new Point(center + halfLength, center -halfLength);
         Point topLeft = new Point(center -halfLength,center -halfLength);
-        Point botRight = new Point(center + halfLength, center - halfLength);
+        Point botRight = new Point(center + halfLength, center + halfLength);
         Point botLeft = new Point(center -halfLength, center + halfLength);
         
         int boundRight = botRight.x;
@@ -80,22 +80,16 @@ public class BallDemo
         int boundBot = botLeft.y;
         
         myCanvas.setVisible(true);
-        
-        
 
         // draw the left Box;
-        myCanvas.drawLine(topLeft.x, topLeft.y,
-        botLeft.x, botLeft.y);
+        drawLine(topLeft, botLeft);
         // draw the top Box;
-        myCanvas.drawLine(topLeft.x, topLeft.y,
-        topRight.x, topRight.y);
+        drawLine(topLeft, topRight);
         // draw the right box;
-        myCanvas.drawLine(center + halfLength, center - halfLength,
-        center + halfLength, center + halfLength);
+        drawLine(topRight, botRight); // error
         // draw bottom box
-        myCanvas.drawLine(center - halfLength, center + halfLength,
-        center + halfLength, center + halfLength);
-        // crate and show the balls
+        drawLine(botLeft, botRight); // error
+        // create nd show the blls
         BoxBall ball = new BoxBall(centerX, centerY, 16, Color.BLUE, myCanvas, 100, 100);
         ball.draw();
         BoxBall ball2 = new BoxBall(centerX, centerY, 20, Color.RED, myCanvas, 100, 100);
@@ -103,14 +97,14 @@ public class BallDemo
         
         int timer = 0;
 
-        // make them bounce
+        // mke them bounce
         boolean finished =  false;
         while(!finished && timer < 1000) {
             timer++;
-            myCanvas.wait(50);           // small delay
+            myCanvas.wait(50);           // smll dely
             ball.move();
             ball2.move();
-            // stop once ball has travelled a certain distance on x axis
+            // stop once bll hs trvelled  certin distnce on x xis
             if(ball.getXPosition() >= 550 || ball2.getXPosition() >= 550) {
                 finished = true;
             }
@@ -120,4 +114,8 @@ public class BallDemo
         }
         
     }
+    
+    public void drawLine(Point a, Point b){
+            myCanvas.drawLine(a.x, a.y, b.x, b.y);   
+        }
 }
