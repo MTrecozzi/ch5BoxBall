@@ -80,20 +80,27 @@ public class BallDemo
         int boundBot = botLeft.y;
         
         myCanvas.setVisible(true);
-
+        
+        // public void drawBox;
         // draw the left Box;
         drawLine(topLeft, botLeft);
         // draw the top Box;
         drawLine(topLeft, topRight);
         // draw the right box;
-        drawLine(topRight, botRight); // error
+        drawLine(topRight, botRight); 
         // draw bottom box
-        drawLine(botLeft, botRight); // error
+        drawLine(botLeft, botRight); 
         // create nd show the blls
-        BoxBall ball = new BoxBall(centerX, centerY, 16, Color.BLUE, myCanvas, 100, 100);
+        BoxBall ball = new BoxBall(centerX, centerY, 16, Color.BLUE, myCanvas, boxLength);
         ball.draw();
-        BoxBall ball2 = new BoxBall(centerX, centerY, 20, Color.RED, myCanvas, 100, 100);
-        ball2.draw();
+        
+        putBoundingPoints(ball, "topRight", topRight);
+        putBoundingPoints(ball, "topLeft", topLeft);
+        putBoundingPoints(ball, "botLeft", botLeft);
+        putBoundingPoints(ball, "botRight", botRight);
+        
+        
+   
         
         int timer = 0;
 
@@ -101,11 +108,16 @@ public class BallDemo
         boolean finished =  false;
         while(!finished && timer < 1000) {
             timer++;
-            myCanvas.wait(50);           // smll dely
+            myCanvas.wait(50);
+            
+            // smll dely
+            
+            // Draw line in update method
+            
             ball.move();
-            ball2.move();
+            
             // stop once bll hs trvelled  certin distnce on x xis
-            if(ball.getXPosition() >= 550 || ball2.getXPosition() >= 550) {
+            if(ball.getXPosition() >= 550) {
                 finished = true;
             }
             
@@ -117,5 +129,9 @@ public class BallDemo
     
     public void drawLine(Point a, Point b){
             myCanvas.drawLine(a.x, a.y, b.x, b.y);   
-        }
+    }
+        
+    public void putBoundingPoints(BoxBall ball,String name, Point point) {
+        ball.boundingPoints.put(name, point);
+    }
 }

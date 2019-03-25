@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=BoxBall
 comment0.text=\r\n\ Class\ BoxBall\ -\ a\ graphical\ ball\ that\ observes\ the\ effect\ of\ gravity.\ The\ ball\r\n\ has\ the\ ability\ to\ move.\ Details\ of\ movement\ are\ determined\ by\ the\ ball\ itself.\ It\r\n\ will\ fall\ downwards,\ accelerating\ with\ time\ due\ to\ the\ effect\ of\ gravity,\ and\ bounce\r\n\ upward\ again\ when\ hitting\ the\ ground.\r\n\ \r\n\ This\ variation\ of\ the\ Bouncing\ Ball\ class\ models\ a\ ball\ that\ moves\ inside\ a\ box.\r\n\r\n\ \r\n\ @author\ Matthew\ Trecozzi\ (G00248431);\r\n\ @version\ 2019.3.25\r\n
-comment1.params=xPos\ yPos\ ballDiameter\ ballColor\ drawingCanvas\ boxHeight\ boxWidth
-comment1.target=BoxBall(int,\ int,\ int,\ java.awt.Color,\ Canvas,\ int,\ int)
+comment1.params=xPos\ yPos\ ballDiameter\ ballColor\ drawingCanvas\ boxLength
+comment1.target=BoxBall(int,\ int,\ int,\ java.awt.Color,\ Canvas,\ int)
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ BoxBall\r\n\r\n\ @param\ xPos\ \ the\ horizontal\ coordinate\ of\ the\ ball\r\n\ @param\ yPos\ \ the\ vertical\ coordinate\ of\ the\ ball\r\n\ @param\ ballDiameter\ \ the\ diameter\ (in\ pixels)\ of\ the\ ball\r\n\ @param\ ballColor\ \ the\ color\ of\ the\ ball\r\n\ @param\ groundPos\ \ the\ position\ of\ the\ ground\ (where\ the\ wall\ will\ bounce)\r\n\ @param\ drawingCanvas\ \ the\ canvas\ to\ draw\ this\ ball\ on\r\n
 comment2.params=
 comment2.target=void\ draw()

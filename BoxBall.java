@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.geom.*;
+import java.util.HashMap;
 
 /**
  * Class BoxBall - a graphical ball that observes the effect of gravity. The ball
@@ -29,9 +30,10 @@ public class BoxBall
     private int ySpeed = 1;                // initial downward speed
     private int xSpeed = 1;
     
-    public int boxLength;
-    private int boxBottom;
-    private int boxRight;
+    int moveX;
+    int moveY;
+    
+    public HashMap<String, Point> boundingPoints = new HashMap<>();
     
 
     /**
@@ -45,16 +47,20 @@ public class BoxBall
      * @param drawingCanvas  the canvas to draw this ball on
      */
     public BoxBall(int xPos, int yPos, int ballDiameter, Color ballColor,
-                         Canvas drawingCanvas, int boxHeight, int boxWidth)
+                         Canvas drawingCanvas, int boxLength)
     {
+        
+        moveX = xSpeed;
+        moveY = ySpeed;
+        
         xPosition = xPos;
         yPosition = yPos;
         color = ballColor;
         diameter = ballDiameter;
+        // Diameter check
         
         canvas = drawingCanvas;
-        int boxBottom = boxLength /2;
-        int boxRight = boxLength /2;
+        
     }
 
     /**
@@ -82,18 +88,27 @@ public class BoxBall
         // remove from canvas at the current position
         erase();
             
-        int moveX = xSpeed;
-        int moveY = ySpeed;
+        
         
         
         
         // compute new position
         
-        yPosition += moveY;
-        xPosition += moveX;
+        
 
         // check if it has hit the a wall and act accordingly
-       
+       if (xPosition + diameter + 1 > boundingPoints.get("topRight").x){
+           moveX = -moveX;
+        }
+         if (yPosition + diameter + 1 < boundingPoints.get("botRight").y){
+            moveY = -moveY;    
+        }  if (xPosition - 1 < boundingPoints.get("topLeft").x) {
+            moveX = -moveX;
+        }  if (yPosition -1 > boundingPoints.get("topRight").y)
+            moveY = -moveY;
+            
+        yPosition += moveY;
+        xPosition += moveX;
 
         // draw again at new position
         draw();

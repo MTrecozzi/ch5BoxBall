@@ -12,4 +12,6 @@ comment3.target=void\ boxBounce()
 comment3.text=\ Simultes\ \ bouncing\ ball\ confined\ within\ \ box\r\n
 comment4.params=a\ b
 comment4.target=void\ drawLine(Point,\ Point)
-numComments=5
+comment5.params=ball\ name\ point
+comment5.target=void\ putBoundingPoints(BoxBall,\ java.lang.String,\ Point)
+numComments=6
