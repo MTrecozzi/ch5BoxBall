@@ -59,16 +59,33 @@ public class BallDemo
         int boxLength = 100;
         int halfLength = boxLength / 2;
         
+        // create a class for point values (2, 3);
+        // create point values to check against;
+        
         int center = 200; // Position of the center of the box
         int centerX = center;
         int centerY = center;
+        
+        Point topRight = new Point(center + halfLength, center -halfLength);
+        Point topLeft = new Point(center -halfLength,center -halfLength);
+        Point botRight = new Point(center + halfLength, center - halfLength);
+        Point botLeft = new Point(center -halfLength, center + halfLength);
+        
 
         myCanvas.setVisible(true);
 
         // draw the left Box;
+        myCanvas.drawLine(topLeft.x, topLeft.y,
+        botLeft.x, botLeft.y);
+        // draw the top Box;
         myCanvas.drawLine(center - halfLength, center - halfLength,
-        center - halfLength, center + halfLength);
-
+        center + halfLength, center - halfLength);
+        // draw the right box;
+        myCanvas.drawLine(center + halfLength, center - halfLength,
+        center + halfLength, center + halfLength);
+        // draw bottom box
+        myCanvas.drawLine(center - halfLength, center + halfLength,
+        center + halfLength, center + halfLength);
         // crate and show the balls
         BoxBall ball = new BoxBall(centerX, centerY, 16, Color.BLUE, myCanvas, 100, 100);
         ball.draw();
