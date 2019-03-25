@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.geom.*;
 import java.util.HashMap;
+import java.util.Random;
 
 /**
  * Class BoxBall - a graphical ball that observes the effect of gravity. The ball
@@ -50,6 +51,10 @@ public class BoxBall
                          Canvas drawingCanvas, int boxLength)
     {
         
+        Random rand = new Random();
+        int xSpeed = rand.nextInt(5) + 2;
+        int ySpeed = rand.nextInt(5) + 2;
+        
         moveX = xSpeed;
         moveY = ySpeed;
         
@@ -88,23 +93,17 @@ public class BoxBall
         // remove from canvas at the current position
         erase();
             
-        
-        
-        
-        
-        // compute new position
-        
-        
+        // compute new position   
 
         // check if it has hit the a wall and act accordingly
-       if (xPosition + diameter + 1 > boundingPoints.get("topRight").x){
+       if (xPosition + diameter + moveX > boundingPoints.get("topRight").x){
            moveX = -moveX;
         }
-         if (yPosition + diameter + 1 < boundingPoints.get("botRight").y){
+         if (yPosition + diameter + moveY < boundingPoints.get("botRight").y){
             moveY = -moveY;    
-        }  if (xPosition - 1 < boundingPoints.get("topLeft").x) {
+        }  if (xPosition + moveX < boundingPoints.get("topLeft").x) {
             moveX = -moveX;
-        }  if (yPosition -1 > boundingPoints.get("topRight").y)
+        }  if (yPosition - moveY > boundingPoints.get("topRight").y)
             moveY = -moveY;
             
         yPosition += moveY;
