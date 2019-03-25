@@ -66,20 +66,29 @@ public class BallDemo
         int centerX = center;
         int centerY = center;
         
+       myCanvas.getSize().getHeight();
+       myCanvas.getSize().getWidth();
+        
         Point topRight = new Point(center + halfLength, center -halfLength);
         Point topLeft = new Point(center -halfLength,center -halfLength);
         Point botRight = new Point(center + halfLength, center - halfLength);
         Point botLeft = new Point(center -halfLength, center + halfLength);
         
-
+        int boundRight = botRight.x;
+        int boundLeft = botLeft.x;
+        int boundTop = topLeft.y;
+        int boundBot = botLeft.y;
+        
         myCanvas.setVisible(true);
+        
+        
 
         // draw the left Box;
         myCanvas.drawLine(topLeft.x, topLeft.y,
         botLeft.x, botLeft.y);
         // draw the top Box;
-        myCanvas.drawLine(center - halfLength, center - halfLength,
-        center + halfLength, center - halfLength);
+        myCanvas.drawLine(topLeft.x, topLeft.y,
+        topRight.x, topRight.y);
         // draw the right box;
         myCanvas.drawLine(center + halfLength, center - halfLength,
         center + halfLength, center + halfLength);
