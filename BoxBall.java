@@ -100,7 +100,7 @@ public class BoxBall
     public void move()
     {
         // remove from canvas at the current position
-        erase();
+        //erase();
             
         // compute new position   
         // If distance between this and another circle < b1 rad + b2 rad, they are colliding, reverse their directions.

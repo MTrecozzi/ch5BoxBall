@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.util.ArrayList;
 
 /**
  * Class BallDemo - a short demonstration showing animation with the 
@@ -14,6 +15,7 @@ import java.awt.Color;
 public class BallDemo   
 {
     private Canvas myCanvas;
+    public ArrayList<BoxBall> balls = new ArrayList<>();
 
     /**
      * Crete  BllDemo object. Cretes  fresh cnvs nd mkes it visible.
