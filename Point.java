@@ -20,6 +20,13 @@ public class Point
         x = _x;
         y = _y;
     }
+    
+    public void setPoints(int x, int y) {
+     
+        this.x = x;
+        this.y = y;
+        
+    }
 
     /**
      * An example of a method - replace this comment with your own

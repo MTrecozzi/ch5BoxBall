@@ -21,6 +21,9 @@ public class BallDemo
     public BallDemo()
     {
         myCanvas = new Canvas("Bll Demo", 600, 500);
+        
+        // call boxBounce for testing purposes
+        boxBounce();
     }
 
     /**
@@ -99,6 +102,14 @@ public class BallDemo
         putBoundingPoints(ball, "botLeft", botLeft);
         putBoundingPoints(ball, "botRight", botRight);
         
+        BoxBall ball2 = new BoxBall(centerX, centerY, 16, Color.RED, myCanvas, boxLength);
+        ball.draw();
+        
+        putBoundingPoints(ball2, "topRight", topRight);
+        putBoundingPoints(ball2, "topLeft", topLeft);
+        putBoundingPoints(ball2, "botLeft", botLeft);
+        putBoundingPoints(ball2, "botRight", botRight);
+        
         
    
         
@@ -115,6 +126,7 @@ public class BallDemo
             // Draw line in update method
             
             ball.move();
+            ball2.move();
             
             // stop once bll hs trvelled  certin distnce on x xis
             if(ball.getXPosition() >= 550) {

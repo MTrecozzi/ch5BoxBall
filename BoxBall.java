@@ -24,6 +24,7 @@ public class BoxBall
     private Ellipse2D.Double circle;
     private Color color;
     private int diameter;
+    public int radius;
     private int xPosition;
     private int yPosition;
 
@@ -33,6 +34,8 @@ public class BoxBall
     
     int moveX;
     int moveY;
+    
+    public Point center;
     
     public HashMap<String, Point> boundingPoints = new HashMap<>();
     
@@ -60,8 +63,14 @@ public class BoxBall
         
         xPosition = xPos;
         yPosition = yPos;
+        
+        
         color = ballColor;
         diameter = ballDiameter;
+        
+        radius = diameter / 2;
+        
+        center = new Point (xPosition + radius, yPosition + radius);
         // Diameter check
         
         canvas = drawingCanvas;
@@ -94,7 +103,7 @@ public class BoxBall
         erase();
             
         // compute new position   
-
+        // If distance between this and another circle < b1 rad + b2 rad, they are colliding, reverse their directions.
         // check if it has hit the a wall and act accordingly
        if (xPosition + diameter + moveX > boundingPoints.get("topRight").x){
            moveX = -moveX;
@@ -108,6 +117,8 @@ public class BoxBall
             
         yPosition += moveY;
         xPosition += moveX;
+        
+        center.setPoints(xPosition + radius, yPosition + radius);
 
         // draw again at new position
         draw();

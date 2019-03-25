@@ -29,6 +29,8 @@ public class BouncingBall
     private final int groundPosition;      // y position of ground
     private Canvas canvas;
     private int ySpeed = 1;                // initial downward speed
+    
+   
 
     /**
      * Constructor for objects of class BouncingBall
