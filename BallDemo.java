@@ -17,6 +17,7 @@ public class BallDemo
 {
     private Canvas myCanvas;
     public ArrayList<BoxBall> balls = new ArrayList<>();
+    public Point canvasCenter;
 
     /**
      * Crete  BllDemo object. Cretes  fresh cnvs nd mkes it visible.
@@ -25,8 +26,10 @@ public class BallDemo
     {
         myCanvas = new Canvas("Bll Demo", 600, 500);
         
+        canvasCenter = new Point((int) myCanvas.getSize().getWidth()/ 2,(int) myCanvas.getSize().getHeight() /2);
+        
         // call boxBounce for testing purposes
-        boxBounce();
+        //boxBounce();
     }
 
     /**
@@ -67,14 +70,14 @@ public class BallDemo
         
     }
     
-    public void populateScene() {
+    public void populateScene(int _totalBalls) {
      
         Random rand = new Random();
         
-        int totalBalls = rand.nextInt(26);
-        totalBalls += 5;
+        //int totalBalls = rand.nextInt(26);
+        //totalBalls += 5;
         
-        for (int i = 0; i < totalBalls; i++) {
+        for (int i = 0; i < _totalBalls; i++) {
          
             int size = rand.nextInt(10) + 10;
             
@@ -107,7 +110,7 @@ public class BallDemo
                 
             }
             
-            addBall(200, 200, size, color);
+            addBall(canvasCenter.x, canvasCenter.y, size, color);
             
             
         }
@@ -116,24 +119,24 @@ public class BallDemo
     
     /** Simultes  bouncing ball confined within  box
      */
-    public void boxBounce() {
-        int boxLength = 100;
+    public void boxBounce(int totalBalls) {
+        int boxLength = (int) myCanvas.getSize().getHeight() - 10;
         int halfLength = boxLength / 2;
         
         // crete  clss for point vlues (2, 3);
         // crete point vlues to check ginst;
         
-        int center = 200; // Position of the center of the box
-        int centerX = center;
-        int centerY = center;
+        // x and y center of the box
+        int centerX = canvasCenter.x;
+        int centerY = canvasCenter.y;
         
        myCanvas.getSize().getHeight();
        myCanvas.getSize().getWidth();
         
-        Point topRight = new Point(center + halfLength, center -halfLength);
-        Point topLeft = new Point(center -halfLength,center -halfLength);
-        Point botRight = new Point(center + halfLength, center + halfLength);
-        Point botLeft = new Point(center -halfLength, center + halfLength);
+        Point topRight = new Point(centerX + halfLength, centerY -halfLength);
+        Point topLeft = new Point(centerX -halfLength,centerY -halfLength);
+        Point botRight = new Point(centerX + halfLength, centerY + halfLength);
+        Point botLeft = new Point(centerX -halfLength, centerY + halfLength);
         
         int boundRight = botRight.x;
         int boundLeft = botLeft.x;
@@ -153,7 +156,7 @@ public class BallDemo
         drawLine(botLeft, botRight); 
         // create and show the balls
         
-        populateScene();
+        populateScene(totalBalls);
         
         // BoxBall ball = new BoxBall(centerX, centerY, 16, Color.BLUE, myCanvas);
         // ball.draw();
