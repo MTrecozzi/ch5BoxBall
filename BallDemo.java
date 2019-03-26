@@ -5,12 +5,11 @@ import java.util.Random;
 /**
  * Class BallDemo - a short demonstration showing animation with the 
  * Canvas class. 
+ * 
+ * Demonstrates the BoxBall Class
  *
- * @author Bill Crosbie
- * @version 2015-March-BB
- *
- * @author Michael Kölling and David J. Brnes
- * @version 2011.07.31
+ * @author Matthew Trecozzi
+ * @version 3.25.19
  */
 
 public class BallDemo   
@@ -20,7 +19,7 @@ public class BallDemo
     public Point canvasCenter;
 
     /**
-     * Crete  BllDemo object. Cretes  fresh cnvs nd mkes it visible.
+     * Create a BallDemo Object, initializes our main canvas and makes it visible.
      */
     public BallDemo()
     {
@@ -33,7 +32,9 @@ public class BallDemo
     }
 
     /**
-     * Simulte two bouncing balls
+     * @ return void
+     * @ parame null
+     * Simulate two bouncing balls
      */
     public void bounce()
     {
@@ -63,13 +64,26 @@ public class BallDemo
         }
     }
     
-    
+    /**
+     * Initialize and add a ballObject to our ArrayList Collection
+     * @return void
+     * @param startX initiailizes the balls starting X Position
+     * @param startY initializes the balls starting X position
+     * @param diameter sets the balls diameter and size
+     * @param color initializes the balls color.
+     */
     public void addBall(int startX, int startY, int diameter, Color color) {
         
      balls.add( new BoxBall (startX, startY, diameter, color, myCanvas)); 
         
     }
     
+    /**
+     * Initializes the scene by creating and distributing ball Objects into the scene space and the balls arrayList for management.
+     * @return void
+     * @param _totalBalls The total number of ball objects to generate
+     * @param boxLength The Length of one side of the square box.
+     */
     public void populateScene(int _totalBalls, int boxLength) {
      
         Random rand = new Random();
@@ -152,7 +166,10 @@ public class BallDemo
         
     }
     
-    /** Simultes  bouncing ball confined within  box
+    /** 
+     * Simulates  bouncing ball(s) confined within  box
+     * @return void
+     * @param totalBalls The total Balls to generate and simulate within the scene
      */
     public void boxBounce(int totalBalls) {
         int boxLength = (int) myCanvas.getSize().getHeight() - ((int) myCanvas.getSize().getHeight() / 10);
@@ -231,10 +248,24 @@ public class BallDemo
         
     }
     
+    /**
+     * Draws a line between the position values of two point objects
+     * @return void
+     * @param a Point a
+     * @param b Point b
+     */
     public void drawLine(Point a, Point b){
             myCanvas.drawLine(a.x, a.y, b.x, b.y);   
     }
-        
+    
+    
+    /**
+     * Initializes the boundingPoints hashMap within a ball object with the given point name and value key map relationship.
+     * @return void
+     * @param ball The ball object to initialize
+     * @param name The name of the boundingPoint
+     * @param point The Point Object Value
+     */    
     public void putBoundingPoints(BoxBall ball,String name, Point point) {
         ball.boundingPoints.put(name, point);
     }

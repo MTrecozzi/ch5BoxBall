@@ -4,10 +4,7 @@ import java.util.HashMap;
 import java.util.Random;
 
 /**
- * Class BoxBall - a graphical ball that observes the effect of gravity. The ball
- * has the ability to move. Details of movement are determined by the ball itself. It
- * will fall downwards, accelerating with time due to the effect of gravity, and bounce
- * upward again when hitting the ground.
+ * Class BoxBall - A Graphical Ball that is initialized with a velocity, and bounces around within the constraints of its modeled box.
  * 
  * This variation of the Bouncing Ball class models a ball that moves inside a box.
  *
@@ -18,36 +15,32 @@ import java.util.Random;
 
 public class BoxBall
 {
-
-
-    private int ballDegradation = 2;
-    private Ellipse2D.Double circle;
-    private Color color;
-    private int diameter;
-    public int radius;
-    private int xPosition;
-    private int yPosition;
+    private Ellipse2D.Double circle;  
+    private Color color; // Color of the Ball
+    private int diameter; // Diameter of the BoxBall Object
+    public int radius; // Radius to be used in calculations, 1/2 * diameter
+    private int xPosition; // starting xPosition;
+    private int yPosition; // startung yPosition
 
     private Canvas canvas;
-    private int ySpeed = 1;                // initial downward speed
-    private int xSpeed = 1;
+    private int ySpeed = 1; // initial yAxis speed
+    private int xSpeed = 1; // initial xAxis speed
     
-    int moveX;
-    int moveY;
+    int moveX; // current xMovementSpeed
+    int moveY; // current yMovementSpeed
     
-    public Point center;
+    public Point center; // center position of the boxBall object
     
-    public HashMap<String, Point> boundingPoints = new HashMap<>();
+    public HashMap<String, Point> boundingPoints = new HashMap<>(); // A hashMap between String bounding point Names, and Point Values
     
 
     /**
      * Constructor for objects of class BoxBall
      *
-     * @param xPos  the horizontal coordinate of the ball
-     * @param yPos  the vertical coordinate of the ball
+     * @param xPos  the starting horizontal coordinate of the ball
+     * @param yPos  the starting vertical coordinate of the ball
      * @param ballDiameter  the diameter (in pixels) of the ball
      * @param ballColor  the color of the ball
-     * @param groundPos  the position of the ground (where the wall will bounce)
      * @param drawingCanvas  the canvas to draw this ball on
      */
     public BoxBall(int xPos, int yPos, int ballDiameter, Color ballColor,
