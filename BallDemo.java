@@ -79,7 +79,7 @@ public class BallDemo
         
         for (int i = 0; i < _totalBalls; i++) {
          
-            int size = rand.nextInt(10) + 10;
+            int size = rand.nextInt(21) + 10;
             
             int colorNumber = rand.nextInt(5);
             Color color = Color.RED;
@@ -214,8 +214,7 @@ public class BallDemo
 
         // mke them bounce
         boolean finished =  false;
-        while(!finished && timer < 1000) {
-            timer++;
+        while(!finished) {     
             myCanvas.wait(50);
             
             // smll dely
