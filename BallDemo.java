@@ -70,7 +70,7 @@ public class BallDemo
         
     }
     
-    public void populateScene(int _totalBalls) {
+    public void populateScene(int _totalBalls, int boxLength) {
      
         Random rand = new Random();
         
@@ -110,7 +110,42 @@ public class BallDemo
                 
             }
             
-            addBall(canvasCenter.x, canvasCenter.y, size, color);
+            int quadrant = rand.nextInt(4);
+            
+            int xOffset = rand.nextInt(boxLength / 2) - 30;
+            int yOffset = rand.nextInt(boxLength /2) - 30;
+            
+            
+            switch (quadrant){
+                
+                case 0:
+                // spawn in top left quadrant
+                xOffset = -xOffset;
+                break;
+                
+                case 1:
+                // spawn in top right quadrant
+                break;
+                
+                case 2:
+                // spawn in bot right quadrant
+                yOffset = -yOffset;
+                break;
+                
+                case 3: 
+                // spon in bot left quadrant
+                yOffset = -yOffset;
+                xOffset = -xOffset;
+                break;
+                
+                default:
+                break;
+                
+                
+                
+            }
+            
+            addBall(canvasCenter.x + xOffset, canvasCenter.y + yOffset, size, color);
             
             
         }
@@ -120,7 +155,7 @@ public class BallDemo
     /** Simultes  bouncing ball confined within  box
      */
     public void boxBounce(int totalBalls) {
-        int boxLength = (int) myCanvas.getSize().getHeight() - 10;
+        int boxLength = (int) myCanvas.getSize().getHeight() - ((int) myCanvas.getSize().getHeight() / 10);
         int halfLength = boxLength / 2;
         
         // crete  clss for point vlues (2, 3);
@@ -156,7 +191,7 @@ public class BallDemo
         drawLine(botLeft, botRight); 
         // create and show the balls
         
-        populateScene(totalBalls);
+        populateScene(totalBalls, boxLength);
         
         // BoxBall ball = new BoxBall(centerX, centerY, 16, Color.BLUE, myCanvas);
         // ball.draw();
