@@ -82,33 +82,33 @@ public class BallDemo
             int size = rand.nextInt(21) + 10;
             
             int colorNumber = rand.nextInt(5);
-            Color color = Color.RED;
+            Color color = new Color (rand.nextInt(246), rand.nextInt(246), rand.nextInt(246));
             
-            switch (colorNumber){      
-                case  0 : 
-                color = Color.RED;
-                break;
+            // switch (colorNumber){      
+                // case  0 : 
+                // color = Color.RED;
+                // break;
                 
-                case 1 :
-                color = Color.BLUE;
-                break;
+                // case 1 :
+                // color = Color.BLUE;
+                // break;
                 
-                case 2 :
-                color = Color.CYAN;
-                break;
+                // case 2 :
+                // color = Color.CYAN;
+                // break;
                 
-                case 3 :
-                color = Color.ORANGE;
-                break;
+                // case 3 :
+                // color = Color.ORANGE;
+                // break;
                 
-                case 4 :
-                color = Color.PINK;
-                break;
+                // case 4 :
+                // color = Color.PINK;
+                // break;
                 
-                default:
-                break;
+                // default:
+                // break;
                 
-            }
+            // }
             
             int quadrant = rand.nextInt(4);
             
