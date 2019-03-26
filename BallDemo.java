@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Class BallDemo - a short demonstration showing animation with the 
@@ -58,6 +59,61 @@ public class BallDemo
             }
         }
     }
+    
+    
+    public void addBall(int startX, int startY, int diameter, Color color) {
+        
+     balls.add( new BoxBall (startX, startY, diameter, color, myCanvas)); 
+        
+    }
+    
+    public void populateScene() {
+     
+        Random rand = new Random();
+        
+        int totalBalls = rand.nextInt(26);
+        totalBalls += 5;
+        
+        for (int i = 0; i < totalBalls; i++) {
+         
+            int size = rand.nextInt(10) + 10;
+            
+            int colorNumber = rand.nextInt(5);
+            Color color = Color.RED;
+            
+            switch (colorNumber){      
+                case  0 : 
+                color = Color.RED;
+                break;
+                
+                case 1 :
+                color = Color.BLUE;
+                break;
+                
+                case 2 :
+                color = Color.CYAN;
+                break;
+                
+                case 3 :
+                color = Color.ORANGE;
+                break;
+                
+                case 4 :
+                color = Color.PINK;
+                break;
+                
+                default:
+                break;
+                
+            }
+            
+            addBall(200, 200, size, color);
+            
+            
+        }
+        
+    }
+    
     /** Simultes  bouncing ball confined within  box
      */
     public void boxBounce() {
@@ -95,17 +151,15 @@ public class BallDemo
         drawLine(topRight, botRight); 
         // draw bottom box
         drawLine(botLeft, botRight); 
-        // create nd show the blls
-        BoxBall ball = new BoxBall(centerX, centerY, 16, Color.BLUE, myCanvas, boxLength);
-        ball.draw();
+        // create and show the balls
+        
+        populateScene();
+        
+        // BoxBall ball = new BoxBall(centerX, centerY, 16, Color.BLUE, myCanvas);
+        // ball.draw();
    
-        balls.add(ball);
-        
-        
-        BoxBall ball2 = new BoxBall(centerX, centerY, 16, Color.RED, myCanvas, boxLength);
-        ball2.draw();
-        
-        balls.add(ball2);
+        // balls.add(ball);
+
         
         balls.stream()
         .forEach(b -> 
@@ -131,14 +185,8 @@ public class BallDemo
             // Draw line in update method
             // Erase All Balls in Stream
             balls.stream().forEach(b -> b.erase());
-            
-            ball.move();
-            ball2.move();
-            
-            // stop once bll hs trvelled  certin distnce on x xis
-            if(ball.getXPosition() >= 550) {
-                finished = true;
-            }
+            // Apply movement to each ball in the scene;
+            balls.stream().forEach(b -> b.move());
             
             
             

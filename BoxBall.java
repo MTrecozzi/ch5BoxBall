@@ -51,7 +51,7 @@ public class BoxBall
      * @param drawingCanvas  the canvas to draw this ball on
      */
     public BoxBall(int xPos, int yPos, int ballDiameter, Color ballColor,
-                         Canvas drawingCanvas, int boxLength)
+                         Canvas drawingCanvas)
     {
         
         Random rand = new Random();
@@ -101,19 +101,34 @@ public class BoxBall
     {
         // remove from canvas at the current position
         //erase();
+        
+        int xMax = boundingPoints.get("topRight").x;
+        int xMin = boundingPoints.get("topLeft").x;
+        int yMax = boundingPoints.get("topRight").y;
+        int yMin = boundingPoints.get("botRight").y;
             
         // compute new position   
         // If distance between this and another circle < b1 rad + b2 rad, they are colliding, reverse their directions.
+        
         // check if it has hit the a wall and act accordingly
-       if (xPosition + diameter + moveX > boundingPoints.get("topRight").x){
+        
+        // If Ball's position is too far Right
+       if (xPosition + diameter + moveX > xMax){
            moveX = -moveX;
         }
-         if (yPosition + diameter + moveY < boundingPoints.get("botRight").y){
+        // If Ball's position is to far down
+       if (yPosition + diameter + moveY < yMin){
             moveY = -moveY;    
-        }  if (xPosition + moveX < boundingPoints.get("topLeft").x) {
+        }  
+        // If ball position is to far right
+       if (xPosition + moveX - 1 < xMin) {
             moveX = -moveX;
-        }  if (yPosition - moveY > boundingPoints.get("topRight").y)
+        }  
+        
+       if (yPosition - moveY > yMax) {
             moveY = -moveY;
+        }
+            
             
         yPosition += moveY;
         xPosition += moveX;
