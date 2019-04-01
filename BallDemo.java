@@ -1,4 +1,4 @@
-import java.awt.Color;
+   import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -225,9 +225,6 @@ public class BallDemo
             putBoundingPoints(b, "botRight", botRight);
         }
         );        
-   
-        
-        int timer = 0;
 
         // mke them bounce
         boolean finished =  false;
@@ -240,10 +237,7 @@ public class BallDemo
             // Erase All Balls in Stream
             balls.stream().forEach(b -> b.erase());
             // Apply movement to each ball in the scene;
-            balls.stream().forEach(b -> b.move());
-            
-            
-            
+            balls.stream().forEach(b -> b.move());    
         }
         
     }
