@@ -48,8 +48,8 @@ public class BoxBall
     {
         
         Random rand = new Random();
-        int xSpeed = rand.nextInt(5) + 2;
-        int ySpeed = rand.nextInt(5) + 2;
+        int xSpeed = rand.nextInt(15) - 7;
+        int ySpeed = rand.nextInt(15) - 7;
         
         moveX = xSpeed;
         moveY = ySpeed;
