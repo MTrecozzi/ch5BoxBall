@@ -48,8 +48,14 @@ public class BoxBall
     {
         
         Random rand = new Random();
-        int xSpeed = rand.nextInt(15) - 7;
-        int ySpeed = rand.nextInt(15) - 7;
+        
+        // dp uS[eed ram,
+        do
+         xSpeed = rand.nextInt(15) - 7;
+         while (xSpeed == 0);
+        do
+         ySpeed = rand.nextInt(15) - 7;
+        while (ySpeed == 0);
         
         moveX = xSpeed;
         moveY = ySpeed;
